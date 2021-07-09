@@ -53,4 +53,4 @@ jobs:
         app-name: 'tml-drishti-bot'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_b2eb12cd2ccc4753868f8c2785947a3b }}
-        package: 'C:\home\site\wwwroot'
+        package: 'C:\home\data\jobs'
