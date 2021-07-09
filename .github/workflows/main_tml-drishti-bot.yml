@@ -51,4 +51,5 @@ jobs:
       with:
         app-name: 'tml-drishti-bot'
         slot-name: 'production'
-        publish-profile: C:/local/Temp/zipdeploy/*.zip
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_b2eb12cd2ccc4753868f8c2785947a3b }}
+        package: C:/local/Temp/zipdeploy/*.zip
