@@ -1,0 +1,327 @@
+.DayPicker-wrapper {
+  width: 35vw;
+  height: 60vh;
+}
+
+.DayPicker-Month {
+  width: 100%;
+  height: 59vh;
+}
+
+.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+  background-color: mediumseagreen;
+  color: white;
+}
+.welcomeHeader {
+  margin: 0.5rem 0.5rem;
+}
+.fontFix {
+  font-size: 1.2vw;
+}
+.homeScreen {
+  /* border: 1px solid red; */
+  display: grid;
+  grid-template-columns: 1fr 2.9fr 1.1fr;
+  /* grid-template-rows: 1fr 1fr; */
+  grid-template-areas:
+    "leaveContainer leaveStatus teamMembersContainer"
+    "leaveContainer leaveStatus teamMembers";
+  /* "quotaOverview leaveStatus teamMembers"; */
+
+  /* padding: 0 7rem; */
+  padding: 0.5rem;
+  grid-gap: 1.2rem;
+  /* overflow: hidden; */
+  /* height: 100vh; */
+}
+.teamMembers {
+  grid-area: teamMembers;
+}
+
+.leaveContainer {
+  grid-area: leaveContainer;
+  /* border: 1px solid red; */
+  /* height: 97vh; */
+}
+.leaveOption {
+  margin-top: 0.3rem;
+}
+
+.leaveStatus {
+  grid-area: leaveStatus;
+  /* border: 1px solid blue; */
+  /* margin-top: 0.3rem; */
+  /* height: 97vh; */
+}
+.teamMembersContainer {
+  grid-area: teamMembersContainer;
+  /* border: 1px solid black; */
+  /* height: max-content !important; */
+  margin-top: 0.3rem;
+}
+.leaveOptionContainer {
+  /* margin-top: 1rem; */
+}
+.leaveOptionText {
+  font-size: 1.1vw;
+}
+.leaveQuotaContainer {
+  margin-top: 8vh;
+}
+.quotaName {
+  width: 70%;
+  font-size: 1vw;
+}
+.fontFix {
+  font-size: 1vw;
+}
+.leaveStatusContainer {
+  /* border: 1px solid red; */
+}
+.lStatusHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.filterContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  /* border: 1px solid red; */
+}
+.lStatusContents {
+  /* border: 1px solid red; */
+  display: flex;
+  margin: 0.5rem 0.6rem;
+  align-items: center;
+  justify-content: space-between;
+  /* border: 1px solid green; */
+}
+.lStatusSegmentContainer {
+  /* border: 0.1rem solid black; */
+  width: 75%;
+  height: 100%;
+  margin-left: 1.5rem;
+}
+
+.section-center {
+  width: 100%;
+  height: 30vh;
+  /* border: 1px solid red; */
+  /* text-align: center; */
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  /* border: 1px solid blue; */
+  /* padding: 2rem; */
+}
+.lStatusMenuContainer {
+  /* border: 1px solid red !important; */
+  padding: 0.2rem;
+  margin: 0.5rem 0.6rem;
+}
+.lStatusFlex {
+  margin-top: 0.5rem;
+  display: flex;
+  /* border: 1px solid red; */
+  align-items: center;
+}
+
+.ldescPerson {
+  margin-left: 1rem;
+}
+.lStatusBtn {
+  margin-top: 0.5rem;
+  display: flex;
+  /* border: 1px solid red; */
+  /* justify-content: space-between; */
+}
+.lbreakPoint {
+  margin: 0.8vh 0;
+  border-bottom: 0.4rem solid whitesmoke;
+}
+
+.lCovidHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lCovidMenuContainer {
+  padding: 0.2rem;
+  margin: 0.5rem 0.6rem;
+}
+.appStudiodesc {
+  display: flex;
+}
+
+article {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all 0.3s linear;
+  /* padding: 1rem */
+  /* border: 1px solid red; */
+}
+article.activeSlide {
+  opacity: 1;
+  transform: translateX(0);
+}
+article.lastSlide {
+  transform: translateX(-100%);
+}
+article.nextSlide {
+  transform: translateX(100%);
+}
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: all 0.3s linear;
+  /* border: 1px solid red; */
+}
+
+.prev {
+  left: 0;
+}
+.next {
+  right: 5vw;
+}
+
+.fontText {
+  font-size: 1vw;
+}
+.lCovidSegmentContainer {
+  border: 0.1rem solid black !important;
+  width: 60%;
+  margin: 0.8rem 0.6rem;
+  padding: 1.5rem;
+  min-height: 12rem !important;
+}
+
+.lCovidDeatailSegment {
+  border-top: 0.2rem solid rgb(24, 183, 223) !important;
+  padding: 1.2rem;
+  height: 21vh;
+  /* border: 1px solid blue !important; */
+}
+.lCovidDeatailSegmentApproval {
+  border-top: 0.2rem solid rgb(24, 183, 223) !important;
+  padding: 1.2rem;
+  /* border: 1px solid blue !important; */
+}
+
+.vacineDetailContainer {
+  /* border: 1px solid red; */
+  width: 44%;
+}
+.vaccineDetailElements {
+  display: flex;
+  justify-content: space-between;
+}
+
+.lCovidbtnContainer {
+  margin: 0.5rem 0rem;
+}
+.fontFix {
+  font-size: 1.2vw;
+}
+.underline {
+  border-bottom: 1px solid navy;
+}
+.enquiryHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  align-items: center;
+}
+/* .ui-dropdown__container.al.js.dd.as.at.au.av.an.ao.ap.aq.ey.jt.ju.jv.jw.jx.cp.ie.jy.fj.jz.ka.kb.kc.kd.ke {
+  width: 100%;
+} */
+.tableContainer {
+  /* border: 1px solid red; */
+  height: 480px;
+  margin-top: 0.5rem;
+  overflow: scroll !important;
+}
+.imageTeamMember {
+  width: 4rem;
+  height: 4rem;
+}
+
+.teamSegmentMember {
+  width: 100%;
+  overflow: scroll;
+  /* border: 1px solid red !important; */
+  height: 40vh;
+}
+@media (max-width: 800px) {
+  .homeScreen {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "teamMembersContainer"
+      "leaveStatus"
+      "leaveContainer"
+      "teamMembers";
+  }
+  .teamMembersContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+  .teamWelcome {
+    width: 45%;
+  }
+  .managerWelcome {
+    width: 45%;
+  }
+}
+@media (max-width: 600px) {
+  .teamMembersContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .teamWelcome {
+    width: 100%;
+  }
+  .managerWelcome {
+    width: 100%;
+  }
+}
+@media (max-width: 800px) {
+  .fontFix {
+    font-size: 2.5vw;
+  }
+}
+@media (max-width: 600px) {
+  .fontFix {
+    font-size: 3vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .fontFix {
+    font-size: 4vw;
+  }
+}
+
+@media (max-width: 800px) {
+  .leaveOptionText {
+    font-size: 2.5vw;
+  }
+}
+@media (max-width: 600px) {
+  .leaveOptionText {
+    font-size: 3vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .leaveOptionText {
+    font-size: 4vw;
+  }
+}

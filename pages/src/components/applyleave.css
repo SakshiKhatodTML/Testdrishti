@@ -1,0 +1,77 @@
+div{
+  font-family: Segoe UI WestEuropean,Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+}
+.ui-segment {
+  box-shadow: rgb(255 255 255 / 0%) 0px 1px 1p !important;
+}
+.btnContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  /* border: 1px solid red; */
+}
+.btnLeaves {
+  padding: 2rem;
+}
+.header {
+  margin-bottom: 0.5rem 0;
+  /* border: 1px solid red; */
+}
+/* .breaker {
+  box-shadow: rgb(34 36 38 / 25%) 5px 5px 20px 0px;
+} */
+
+.dropdowContainer {
+  /* border: 1px solid red; */
+  margin: 1rem 0;
+}
+.datepickerLabel {
+  margin-left: 1rem;
+}
+
+.ui-datepicker > div > div > input {
+  padding-right: 0%;
+}
+.fromDatePicker {
+  margin: 1rem 0;
+}
+.approverContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem auto;
+}
+.approverText {
+  margin-left: 2rem;
+}
+
+.datepickerContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+.validateContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+.approverPersonText {
+  margin-right: 2rem;
+}
+.validateBtns {
+  display: flex;
+
+  flex-direction: row-reverse;
+}
+.reasonTextAreaContainer {
+  margin: 1rem 0;
+}
+
+.leaveRadioBtns {
+  margin: 1rem 0;
+}
+.marginAddnewLeave{
+  margin: 1rem !important;
+}
+Text{
+  font-family: Segoe UI WestEuropean,Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+}

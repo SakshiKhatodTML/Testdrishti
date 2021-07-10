@@ -1,0 +1,21 @@
+{
+  "sourceType": "script",
+  "plugins": [
+    "lodash",
+    "@babel/plugin-transform-runtime"
+  ],
+  "presets": [
+    [
+      "@babel/preset-env", {
+        "useBuiltIns": "entry",
+        "targets": {
+          "browsers": [
+            "last 2 versions",
+            "ie >= 11"
+          ]
+        }
+      }
+    ],
+    "@babel/preset-react"
+  ]
+}

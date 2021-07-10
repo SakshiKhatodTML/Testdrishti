@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        tr.border_bottom {
+            border-bottom: 1px solid #f4f4f4;
+        }
+
+        .select-all-button {
+            background-color: #3d78d7;
+        }
+
+        th.select-all-button>div>div>label>span,
+        :hover {
+            color: white;
+        }
+
+        th.select-all-button>div>div>label>div.ms-Checkbox-checkbox,
+        :hover {
+            border-color: white;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/css/fabric.min.css" />
+    <link rel="stylesheet"
+        href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/css/fabric.components.min.css" />
+    <style>
+        /* #mydiv {
+            border-top: #585A96 solid 1px;
+        } */
+
+        .ms-Button--primary {
+            background-color: #585A96 !important;
+            border-color: #585A96 !important;
+        }
+
+        .ms-Button--secondary {
+            background-color: #E5E5E5 !important;
+        }
+
+        .ms-label {
+            background-color: #585A96 !important;
+            border-color: 1px solid black;
+
+            text-align: center !important;
+        }
+
+        .ms-label1 {
+            background-color: #686de6 !important;
+            border-color: 1px solid black;
+            margin: 5px !important;
+            text-align: center !important;
+        }
+
+        .ms-hist {
+            margin-left: 30%;
+        }
+        .ms-basic {
+            margin-left: 30%;
+        }
+        .textsize {
+            font-size: 50px;
+        }
+        th.select-all-button>div>div>label>div.ms-Checkbox-checkbox,
+        :hover {
+            border-color: #333333;
+        }
+
+        th.select-all-button>div>div>label>span,
+        :hover {
+            color: #333333;
+        }
+
+        .custome-button {
+            background: #E5E5E5;
+        }
+
+        .ms-Checkbox-checkbox>i {
+            color: #E5E5E5 !important;
+        }
+
+        .custome-checkbox>label>div {
+            background-color: #585A96 !important;
+            border-color: #585A96 !important;
+            color: #E5E5E5 !important;
+        }
+
+        .ms-Table-custom {
+            height: 300px !important;
+            max-height: 300px !important;
+        }
+
+        .ms-Button {
+            border: 0px;
+
+        }
+
+        tbody {
+
+            height: 400px;
+            /* Just for the demo          */
+            overflow-y: auto;
+            /* Trigger vertical scroll    */
+            overflow-x: hidden;
+            /* Hide the horizontal scroll */
+            display: block;
+            width: 100%;
+        }
+
+        Table tr,
+        th {
+            display: block !important;
+            font-size: 14px !important;
+            font-weight: 600 !important;
+
+        }
+
+        Table td {
+            display: block !important;
+        }
+
+        .ms-Checkbox-label {
+            font-weight: 600;
+        }
+    </style>
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background-color: #585A96;
+            border-radius: 5px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #585A96;
+        }
+
+        .hover_cls:hover {
+            background-color: #F3F2F1;
+        }
+
+        .select_cls {
+            background-color: #F3F2F1 !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="mydiv"></div>
+    <script src="https://statics.teams.cdn.office.net/sdk/v1.5.2/js/MicrosoftTeams.min.js"
+        asp-append-version="true"></script>
+    <!-- <script src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/js/fabric.min.js"></script> -->
+    <!-- could point to local version -->
+    <!-- <script src="//unpkg.com/office-ui-fabric-react/dist/office-ui-fabric-react.min.js"></script>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script> -->
+    <script src="//unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="//unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <!-- could point to local version -->
+    <script src="//unpkg.com/office-ui-fabric-react/dist/office-ui-fabric-react.min.js"></script>
+
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script type="text/babel">
+        microsoftTeams.initialize();
+        let {
+            DefaultButton, Checkbox, Separator, IconButton, PivotItem, Pivot, Label
+        } = window.Fabric;
+        const IconButtonCustome = (props) => {
+            return (<IconButton {...props} />)
+        }
+        const Button = (props) => {
+            return (
+                <div>
+                    <DefaultButton id={props.id} className={props.className} style={props.style}
+                        onClick={props.onClick}
+                    >
+                        {props.text}
+                    </DefaultButton>
+                </div>
+            );
+        };
+        const SeparatorView = (props) => {
+            return <Separator {...props} />
+        }
+        const CheckBox = (props) => {
+            return <div className="mt-2">
+                <Checkbox className={props.className} id={props.id} label={props.label} onChange={props.onChange} value={props.value} checked={props.value} />
+            </div>
+        }
+        const styles = {
+            root: [{
+                selectors: {
+                    '::before': {
+                        background: 'blue',
+                    },
+                }
+            }]
+        };
+        const CustomPivot = (props) => {
+                const { items } = { ...props };
+                console.log(items);
+                return <Pivot>
+                    {items.map((x, i) => {
+                        return (<PivotItem key={"dsasd" + i} headerText={x.displayname}>
+                            <Label
+                            //  styles={labelStyles}
+                             >{x.body} </Label>
+                        </PivotItem>)
+                    })}
+                </Pivot>
+            }
+        class BenefitRegistration extends React.Component {
+            state = {
+                isLoading: true,
+                isError: false,
+                isSuccess: false,
+                data: {},
+                type: "",
+                replyToId: "",
+                appId: "",
+                isChecked: false
+            }
+            async componentDidMount() {
+                let query = this.props.queryParams();
+                let res = await this.props.data();
+                let type = query.get('type');
+                let replyToId = query.get('replyToId');
+                let appId = query.get('appId');
+                if (res.status === 200) {
+                    let data = [];
+                    let details_data = [];
+                    console.log(res.data.Data);
+                    for (let i in res.data.Data) {
+                        res.data.Data[i].isActive = false
+                        res.data.Data[i].isChecked = false
+
+                        data.push({ ...res.data.Data[i], isActive: false, isChecked: false, isBlock: "Basics" });
+                    }
+                    this.setState({ data: data, isSuccess: true, isLoading: false, type: type, replyToId: replyToId, appId: appId });
+                }
+                else
+                    this.setState({ data: null, isError: true, isLoading: false, isChecked: false });
+            }
+            componentWillReceiveProps(props) {
+
+            }
+            selectAll = () => {
+                let dataObj = this.state.data;
+                let isChecked = this.state.isChecked
+                isChecked = !isChecked
+                if (isChecked) {
+                    for (let i in dataObj) {
+                        dataObj[i].isChecked = true
+                        for (let j in dataObj[i].details) {
+                            dataObj[i].details[j].isChecked = true
+                        }
+                    }
+                }
+                else {
+                    for (let i in dataObj) {
+                        dataObj[i].isChecked = false
+                        for (let j in dataObj[i].details) {
+                            dataObj[i].details[j].isChecked = false
+                        }
+                    }
+                }
+
+                this.setState({ data: dataObj, isChecked: isChecked })
+            }
+            onApprove = (index) => {
+                const dataObj = this.state.data;
+                let selectedData = [];
+                if (typeof index === 'undefined') {
+                    for (let i in dataObj) {
+                        console.log(dataObj[i]);
+                        if (dataObj[i].isChecked)
+                            selectedData.push(dataObj[i]);
+                    }
+                    if (selectedData.length) {
+                        let customerInfo = {
+                            pageType: "poa",
+                            details: { selectedData, replyToId: this.state.replyToId },
+                            status: true,
+                            type: this.state.type,
+                            sendFor: "approve",
+                            remark: " test remark"
+                        }
+                        microsoftTeams.tasks.submitTask(customerInfo, this.state.appId);
+                        return true;
+                    }
+                } else {
+                    selectedData.push(dataObj[index]);
+                    if (selectedData.length) {
+                        let customerInfo = {
+                            pageType: "poa",
+                            details: { selectedData, replyToId: this.state.replyToId },
+                            status: true,
+                            type: this.state.type,
+                            sendFor: "approve",
+                            remark: " test remark"
+                        }
+                        microsoftTeams.tasks.submitTask(customerInfo, this.state.appId);
+                        return true;
+                    }
+                }
+            }
+
+            onReject = (index) => {
+                const dataObj = this.state.data;
+                let selectedData = [];
+                if (typeof index === 'undefined') {
+                    for (let i in dataObj) {
+                        if (dataObj[i].isChecked)
+                            selectedData.push(dataObj[i]);
+                    }
+                    if (selectedData.length) {
+                        let customerInfo = {
+                            pageType: "poa",
+                            details: { selectedData, replyToId: this.state.replyToId },
+                            status: false,
+                            type: this.state.type,
+                            remark: " test remark",
+                            sendFor: "reject"
+                        }
+                        microsoftTeams.tasks.submitTask(customerInfo, this.state.appId);
+                        return true;
+                    }
+                } else {
+                    selectedData.push(dataObj[index]);
+                    if (selectedData.length) {
+                        let customerInfo = {
+                            pageType: "poa",
+                            details: { selectedData, replyToId: this.state.replyToId },
+                            status: false,
+                            type: this.state.type,
+                            sendFor: "approve",
+                            remark: " test remark"
+                        }
+                        microsoftTeams.tasks.submitTask(customerInfo, this.state.appId);
+                        return true;
+                    }
+                }
+            }
+             
+
+            toggle = (index) => {
+                const dataObj = this.state.data;
+                for (let i in dataObj) {
+                    if (index == i) {
+                        continue;
+                    }
+                    dataObj[i].isActive = false;
+                }
+                dataObj[index].isActive = !dataObj[index].isActive;
+                this.setState({ data: dataObj });
+            }
+            selectItem = (detail, index, indexItem) => {
+                let dataObj = this.state.data;
+                dataObj[index].details[indexItem].isChecked = !dataObj[index].details[indexItem].isChecked;
+                for (let i in dataObj[index].details) {
+                    let dataIndex = dataObj[index].details.findIndex(x => x.isChecked === false);
+                    if (dataIndex !== -1) {
+                        dataObj[index].isChecked = false
+                    }
+                    else {
+                        dataObj[index].isChecked = true
+                    }
+                }
+                this.setState({ data: dataObj });
+            }
+            
+            selectPOAId = (detail, index) => {
+                let dataObj = this.state.data;
+                dataObj[index].isChecked = !dataObj[index].isChecked;
+                console.log();
+                if (dataObj[index].isChecked) {
+                    dataObj[index].isActive = false
+                }
+                let isChecked = true
+                for (let i in dataObj) {
+                    let index = dataObj.findIndex(x => x.isChecked === false);
+                    if (index !== -1) {
+                        isChecked = false
+                    }
+                }
+                this.setState({ data: dataObj, isChecked: isChecked })
+            }
+            block = (details, index) => {
+                let dataObj = this.state.data;
+                if (details === "Basics") {
+                    dataObj[index].isBlock = "Basics"
+                }
+                else if (details === "Powers") {
+                    dataObj[index].isBlock = "Powers"
+                }
+                else if (details === "History") {
+                    dataObj[index].isBlock = "History"
+                }
+                console.log(dataObj[index].isBlock);
+                this.setState({ data: dataObj })
+            }
+            tabBasic =(item)=>{
+                return (<table className=" ms-Table">
+                        <tr >
+                            <tr className="ml-7 pl-7">
+                                <td className="pl-3 ms-Grid-col ms-u-sm4">Request No : </td>
+                            <td className="ms-hist ">{item.POARequestID}</td>
+                        </tr>
+                        <tr className="ml-7 pl-7">
+                        <td className="pl-3 ms-Grid-col ms-u-sm4">Requestor :</td>
+                            <td className=" ms-hist">{item.RequestorName}</td>
+                        </tr>
+                        <tr className="ml-7 pl-7">
+                            <td className="pl-3 ms-Grid-col ms-u-sm4">Request Date :</td>
+                            <td className=" ms-hist">{item.RequestedDate.split("T")[0]}</td>
+                        </tr>
+                        <tr className="ml-7 pl-7">
+                            <td className="pl-3 ms-Grid-col ms-u-sm4">Token No :</td>
+                            <td className=" ms-hist">{item.token}</td>
+                        </tr>
+                        <tr className="ml-7 pl-7">
+                            <td className="pl-3 ms-Grid-col ms-u-sm4">POA Raised for :</td>
+                            <td className="ms-hist ">{item.EmployeeName}</td>
+                        </tr>
+                        <tr className="ml-7 pl-7">
+                            <td className="pl-3 ms-Grid-col ms-u-sm4">Status :</td>
+                            <td className="ms-hist ">{item.StatusID}</td>
+                        </tr>
+                        <tr className="ml-7 pl-7">
+                            <td className="pl-3 ms-Grid-col ms-u-sm4">Designation :</td>
+                            <td className=" ms-hist">{item.Designation}</td>
+                        </tr>
+                        <tr className="ml-7 pl-7">
+                            <td className="pl-3 ms-Grid-col ms-u-sm4">Department :</td>
+                            <td className=" ms-hist">{item.Designation}</td>
+                        </tr>
+                        </tr>
+                        <tr></tr>
+                    </table>)
+            }
+            tabPower=(item)=>{
+                return (
+                    <table className=" ms-Table">
+                        <tr className="ml-7 pl-7">
+                                <td className="pl-3 ms-Grid-col ms-u-sm4">Function : </td>
+                            <td className="ms-basic ">{item.FunctionName}</td>
+                        </tr>
+                        <tr className="ml-7 pl-7">
+                                <td className="pl-3 ms-Grid-col ms-u-sm4">Power Type :</td>
+                            <td className="ms-basic ">{item.PowerType}</td>
+                        </tr>
+                        <tr className="ml-7 pl-7">
+                                <td className="pl-3 ms-Grid-col ms-u-sm4">Entity :</td>
+                            <td className="ms-basic ">{item.Entity}</td>
+                        </tr>
+                        <tr className="ml-7 pl-7">
+                                <td className="pl-3 ms-Grid-col ms-u-sm4">PowerType :</td>
+                            <td className=" ms-basic">{item.token}</td>
+                        </tr>
+                        <tr className="ml-7 pl-7">
+                                <td className="pl-3 ms-Grid-col ms-u-sm4">POADocNo :</td>
+                            <td className=" ms-basic">{item.PoaDocNo}</td>
+                        </tr>
+                        <tr className="ml-7 pl-7">
+                                <td className="pl-3 ms-Grid-col ms-u-sm4">Power No :</td>
+                            <td className=" ms-basic">{item.PowerNo}</td>
+                        </tr>
+                        <tr className="ml-7 pl-7">
+                                <td className="pl-3 ms-Grid-col ms-u-sm4">Power Description :</td>
+                            <td className="ms-basic"><div>{item.Description}</div></td>
+                        </tr>
+                    </table>)
+            }
+            tabHistory=(item)=>{
+                return (<div>
+                            <div>
+                            <table className=" ms-Table" >
+                                <tr  >
+                                    <tr className="ml-7 pl-7">
+                                        <td className="pl-4 ms-Grid-col ms-u-sm4">Status : </td>
+
+                                    </tr>
+                                    <tr className="ml-7 pl-7">
+                                        <td className="pl-3 ms-Grid-col ms-u-sm3" >Action By :</td>
+
+                                    </tr>
+                                    <tr className="ml-7 pl-7">
+                                        <td className="pl-3 ms-Grid-col ms-u-sm3">Action Date :</td> 
+                                    </tr>
+                                </tr>
+                            </table>
+
+                            {item.history.map((items) => {
+                                return (
+                                    <table className=" ms-Table" >
+                                        <tr >
+                                            <tr className="ml-7 pl-7">
+                                                <td className="pl-4 ms-Grid-col ms-u-sm4">{items.Status}</td>
+                                            </tr>
+                                            <tr className="ml-7 pl-7">
+                                                <td className="pl-3 ms-Grid-col ms-u-sm3">{items.ActionBy}</td>
+                                            </tr>
+                                            <tr className="ml-7 pl-7">
+                                                <td className="pl-3 ms-Grid-col ms-u-sm3">{items.ActionDate}</td>
+                                            </tr>
+                                        </tr>
+                                    </table>
+                                    )
+                                })}
+                            </div>
+                            </div>)
+            }
+
+            render() {
+
+                if (this.state.isLoading) {
+                    //   return <div>Loading...</div>
+                    return (
+                        <div className="ms-Spinner"></div>
+                    )
+                }
+                else if (this.state.isError) {
+                    return <div>404</div>
+                }
+                else {
+                    return (
+                        <div>
+                            <table className="mt-2 ms-Table ms-Table-custom">
+                                <thead>
+                                    <th>
+                                        <div className="ms-Grid-row">
+                                            <div className="ms-Grid-col ms-u-sm2">
+                                                <div className="">#</div>
+                                            </div>
+                                            <div className="ms-Grid-col ms-u-sm10">
+                                                <div className="ms-Grid-row">
+                                                    <div className="ms-Grid-col ms-u-sm6 ">
+                                                        Request ID
+                                        </div>
+                                                    <div className="ms-Grid-col ms-u-sm6 pl-2">
+                                                        Status
+                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </th>
+
+
+                                </thead>
+                                <tbody>
+                                    {this.state.data && this.state.data.map((item, index) => {
+                                        return (<React.Fragment key={"asdaetr" + index}>
+                                            <tr className="border_bottom">
+                                                <td className={`flex-row hover_cls ${item.isActive ? "select_cls" : ""}`}>
+                                                    <div className="ms-Grid-row">
+                                                        <div className="ms-Grid-col ms-u-sm12"> 
+                                                                <div onClick={e => this.toggle(index)}>
+                                                                    <div className="ms-Grid-col ms-u-sm2">
+                                                                        <i className="ms-Icon ms-Icon--Edit" style={{ color: '#585A96', cursor: 'pointer' }} aria-hidden="true"></i>
+                                                                    </div>
+                                                                    <div className="ms-Grid-col ms-u-sm5 ">
+                                                                        <label>{item.POARequestID}</label>
+                                                                    </div>
+                                                                    <div className="ms-Grid-col ms-u-sm4 ">
+                                                                        <label> None</label>
+                                                                    </div>
+                                                                
+                                                                <div className="ms-Grid-col ms-u-sm1 ">
+                                                                    <CheckBox id={"list" + index} label={""} onChange={e => this.selectPOAId(item, index)} className={item.isChecked ? "custome-checkbox" : ""} value={item.isChecked} />
+                                                                </div> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {item.isActive && (<div >
+                                                        <div className="ms-Grid-row ">
+                                                            
+                                                            <div className="ms-Grid-col ms-u-sm12">
+                                                                <div className=" "><br/>
+                                                                    <CustomPivot items={[{ displayname: "Basics", body:this.tabBasic(item)}, { displayname: "Powers", body: this.tabPower(item) },{displayname:"History",body: this.tabHistory(item) }]} />
+                                                                     
+                                                                </div>
+
+                                                            </div> 
+                                                            </div>
+                                                            <hr />
+                                                            <div>
+                                                            
+                                                            <tr className="ml-4 pl-3">
+                                                                <td>
+                                                                    <div className="d-flex flex-row-reverse mr-2">
+                                                                        <div className="mr-2" style={{ backgroundColor: "#585A96" }}>
+                                                                            <Button className="ms-Button ms-Button--primary mr-1" text="Approve" onClick={e => this.onApprove(index)} />
+                                                                        </div>
+                                                                        <div className="mr-2" style={{ backgroundColor: "#E5E5E5" }}>
+                                                                            <Button className="ms-Button ms-Button--secondary mr-1" text="Reject" onClick={e => this.onReject(index)} />
+                                                                        </div>
+                                                                        <div className="mr-2" style={{ backgroundColor: "#E5E5E5" }}>
+                                                                            <Button className="ms-Button ms-Button--secondary mr-1" text="Back" onClick={e => this.toggle(index)} />
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                </td>
+                                                            </tr>
+                                                        </div>
+                                                        <hr />
+                                                    </div>)}
+                                                </td>
+
+                                            </tr>
+                                        </React.Fragment>
+                                        )
+                                    })}
+                                </tbody>
+                            </table>
+                            <div className="d-flex flex-row mr-2">
+                                <div className="pl-4 ms-Grid-col" style={{ fontWeight: 400 }}>
+                                    <CheckBox id="selectAll" label="Select all" onChange={e => this.selectAll()} className={this.state.isChecked ? "custome-checkbox" : ""} value={this.state.isChecked} />
+                                </div>
+                            </div>
+                            <hr />
+                            <div className="d-flex flex-row-reverse mr-2">
+
+                                <div className="mr-2" style={{ backgroundColor: "#585A96" }}>
+                                    <Button className="ms-Button ms-Button--primary mr-1" text="Approve" onClick={e => this.onApprove(undefined)} />
+                                </div>
+                                <div className="mr-2" style={{ backgroundColor: "#E5E5E5" }}>
+                                    <Button className="ms-Button ms-Button--secondary mr-1" text="Reject" onClick={e => this.onReject(undefined)} />
+                                </div>
+                            </div>
+                        </div>)
+                }
+            }
+        }
+
+
+
+        // Creating default props
+        BenefitRegistration.defaultProps = {
+            data: async () => await axios.get('https://run.mocky.io/v3/33d84086-4f11-4148-8efc-31da921e5aba'),
+            queryParams: () => new URLSearchParams(window.location.search)
+        }
+        ReactDOM.render(<BenefitRegistration />, document.getElementById('mydiv'))
+
+
+    </script>
+
+</body>
+
+</html>

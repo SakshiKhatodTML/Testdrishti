@@ -1,0 +1,26 @@
+.tablecontent{
+    bottom:  -50px ;
+    overflow:  visible ;
+    position:  absolute ;
+    display:  none ;
+    width:  80vw ;
+}
+.validateBtns {
+    display: flex;
+  
+    flex-direction: row-reverse;
+  }
+  .validateContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+  }
+  .child-row{
+    height: auto !important;
+  }
+  .child-table{
+    width: inherit !important;
+  }
+  .ui-table__cell{
+    margin-top: 10px;
+  }

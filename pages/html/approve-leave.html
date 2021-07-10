@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width">
+  <link href="app.css?test=demo" rel="stylesheet"></head>
+
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="app.bundle.js?test=demo"></script>
+  <!-- <script>
+    const loadDynamicScript = (callback) => {
+      const existingScript = document.getElementById('scriptId');
+  
+      if (!existingScript) {
+        const script = document.createElement('script');
+        script.defer= true;
+        script.src = 'app.bundle.js?key'+Date.now(); // URL for the third-party library being loaded.
+        script.id = 'libraryName'; // e.g., googleMaps or stripe
+        document.body.appendChild(script);
+  
+        script.onload = () => {
+          if (callback) callback();
+        };
+      }
+  
+      if (existingScript && callback) callback();
+    };
+    loadDynamicScript(function(){
+      console.log("done")
+    })
+  </script> -->
+  </body>
+
+</html>

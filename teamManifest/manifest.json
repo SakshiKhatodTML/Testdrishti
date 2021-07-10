@@ -1,0 +1,83 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.3/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.3",
+    "version": "1.0.1",
+    "id": "51ce11e6-8be7-4bcf-a2a2-7cb92c0b4338",
+    "packageName": "com.microsoft.teams.taskmoduletester",
+    "developer": {
+        "name": "Celebal Technologies",
+        "websiteUrl": "https://www.microsoft.com",
+        "privacyUrl": "https://www.microsoft.com/privacy",
+        "termsOfUseUrl": "https://www.microsoft.com/termsofuse"
+    },
+    "icons": {
+        "color": "color_icon.jpg",
+        "outline": "color_icon.jpg"
+    },
+    "name": {
+        "short": "Drishti PJ Bot",
+        "full": "Drishti PJ Bot"
+    },
+    "description": {
+        "short": "Drishti Bot Demo/Test app for the Leave and Vaccination",
+        "full": "Drishti Bot is capable to leave managment and track vaccination for employee."
+    },
+    "accentColor": "#020081",
+    "staticTabs": [
+        {
+            "entityId": "personalTab",
+            "name": "Dashboard",
+            "contentUrl": "https://cdebc15bd0ca.ngrok.io/dashboard.html",
+            "scopes": [
+                "personal"
+            ]
+        }
+    ],
+    "bots": [
+        {
+            "botId": "51ce11e6-8be7-4bcf-a2a2-7cb92c0b4338",
+            "scopes": [
+                "team",
+                "personal",
+                "groupchat"
+            ],
+            "commandLists": [
+                {
+                    "scopes": [
+                        "personal"
+                    ],
+                    "commands": [
+                        {
+                            "title": "Hi",
+                            "description": "Initiate the conversion with bot"
+                        },
+                        {
+                            "title": "Manage Leave",
+                            "description": "Leave type SL,CL and PL"
+                        },
+                        {
+                            "title": "Update COVID Data",
+                            "description": "Update vaccination date"
+                        },
+                        {
+                            "title": "I'm not able to Sign-In",
+                            "description": "Bot access issue."
+                        }
+                    ]
+                }
+            ],
+            "supportsFiles": false,
+            "isNotificationOnly": false
+        }
+    ],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "validDomains": [
+        "token.botframework.com",
+        "*.ngrok.io",
+        "*.azurewebsites.net",
+        "graph.microsoft.com"
+    ]
+}
